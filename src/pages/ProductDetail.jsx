@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import Carousel from "../components/Carousel";
-
 function ProductDetail({ detail }) {
   // console.log(detail);
   let { id } = useParams();
@@ -11,7 +10,7 @@ function ProductDetail({ detail }) {
     <div className=" w-full h-full bg-[url('/homeBackground.png')]">
       <div className=" w-11/12 m-auto py-20">
         <h1 className="text-center  text-4xl font-semibold py-4">{product.name}</h1>
-        <Carousel images />
+        <Carousel images={product.images} />
         <p className="text-justify py-8" dangerouslySetInnerHTML={{__html: product.description}}/>
       </div>
     </div>

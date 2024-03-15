@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = ({ routesData }) => {
   const [isSticky, setSticky] = useState(false);
+  const sortedData = [...routesData].sort((a, b) => a.name.localeCompare(b.name))
   useEffect(() => {
     const handleScroll = () => {
       const stickyHeader = document.getElementById("myHeader");
@@ -30,7 +31,7 @@ const Navbar = ({ routesData }) => {
 
   return (
     <div>
-      <div className=" w-full h-[10vh] bg-[url('../../public/background-header.jpg')]  bg-cover">
+      <div className=" w-full h-[10vh] bg-[url('/background-header.jpg')]  bg-cover">
         <div className="w-full h-full bg-opacity-60  bg-[#000]  flex  justify-center items-center">
           <h1 className=" text-2xl font-black text-white ">
             ТИПОГРАФИЯ БИШКЕК
@@ -58,7 +59,7 @@ const Navbar = ({ routesData }) => {
           <GiHamburgerMenu size={28} className="mb-2" />
 
           {/* menu */}
-          <ul className="bg-[#252525] overflow-auto  h-screen w-[80vw] pb-10 absolute top-0 -left-full group-focus:left-0 right-0 duration-150 flex flex-col space-y-3  justify-start">
+          <ul className="bg-[#252525] overflow-auto  h-screen w-[80vw]  z-10 pb-10 absolute top-0 -left-full group-focus:left-0 right-0 duration-150 flex flex-col space-y-3  justify-start">
             <button className="px-10 py-8 relative mr-auto">
               <div className="w-6 h-1 rotate-45 absolute bg-white"></div>
               <div className="w-6 h-1 -rotate-45 absolute bg-white"></div>
@@ -88,7 +89,7 @@ const Navbar = ({ routesData }) => {
             </Link>
 
             <h4 className="text-white font-semibold pt-20 pb-6">Каталог товаров</h4>
-            {routesData?.map((route, index) =>
+            {sortedData?.map((route, index) =>
                 <Link key={index} to={`/${route?.url}`}>
                   <li className="flex justify-start items-center w-full py-4 px-10 border-b-[1px] text-white hover:bg-[#2b2b2b]">
                     {route?.name}
